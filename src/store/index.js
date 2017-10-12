@@ -5,17 +5,16 @@ import firebase from 'firebase'
 import router from '../router'
 
 let config = {
-  apiKey: "AIzaSyCRwgWRdIUz3eILS_uI-JGktIK6cs0wAKY",
-  authDomain: "rorder-123.firebaseapp.com",
-  databaseURL: "https://rorder-123.firebaseio.com",
-  projectId: "rorder-123",
-  storageBucket: "",
-  messagingSenderId: "891671971153"
+  apiKey: 'AIzaSyCRwgWRdIUz3eILS_uI-JGktIK6cs0wAKY',
+  authDomain: 'rorder-123.firebaseapp.com',
+  databaseURL: 'https://rorder-123.firebaseio.com',
+  projectId: 'rorder-123',
+  storageBucket: '',
+  messagingSenderId: '891671971153'
 }
 firebase.initializeApp(config)
 
 let db = firebase.database()
-let contactsRef = db.ref('contacts')
 let preOrdersRef = db.ref('preorders').orderByChild('status').equalTo('open')
 
 Vue.use(Vuex)
@@ -27,7 +26,6 @@ export default new Vuex.Store({
     isReady: false,
     user: {},
     userProfile: {},
-    contacts: [],
     preOrders: [],
     preOrder: {}
   },
@@ -36,7 +34,6 @@ export default new Vuex.Store({
     route: state => state.route,
     isReady: state => state.isReady,
     userProfile: state => state.userProfile,
-    contacts: state => state.contacts,
     preOrders: state => state.preOrders,
     preOrder: state => state.preOrder
   },
@@ -61,8 +58,6 @@ export default new Vuex.Store({
           }
           commit('setUser', profile)
           dispatch('bindPreOrdersRef')
-          // dispatch('bindContactsRef')
-          // dispatch('bindUserProfileRef')
 
           db.ref('contacts/' + profile.uid).once('value').then((snapshot) => {
             if (!snapshot.val()) {
@@ -93,15 +88,9 @@ export default new Vuex.Store({
     bindPreOrderRef: firebaseAction(({ bindFirebaseRef, unbindFirebaseRef }, key) => {
       bindFirebaseRef('preOrder', db.ref('preorders').child(key))
     }),
-    // bindContactsRef: firebaseAction(({ bindFirebaseRef }) => {
-    //   bindFirebaseRef('contacts', contactsRef)
-    // }),
     bindPreOrdersRef: firebaseAction(({ bindFirebaseRef }) => {
       bindFirebaseRef('preOrders', preOrdersRef)
     }),
-    // bindUserProfileRef: firebaseAction(({ state, bindFirebaseRef }) => {
-    //   bindFirebaseRef('userProfile', db.ref('contacts/' + state.user.uid))
-    // }),
     changeUserOrderMenuAmount ({ commit, state }, payload) {
       if (payload.newAmount > 0) {
         db.ref('preorders')
