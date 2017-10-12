@@ -40,6 +40,12 @@
 
         <a @click="addOtherMenu(formData)" class="button is-success is-large">Add</a>
       </div>
+
+      <div class="has-text-centered">
+        <hr v-if="isOwner">
+        <button v-if="isOwner" @click="closeOrder()" class="button is-danger">Close this order</button>
+      </div>
+      
     </div>
     <div v-else>
       Loading...
@@ -73,12 +79,16 @@ export default {
     ...mapGetters([
       'user',
       'preOrder'
-    ])
+    ]),
+    isOwner () {
+      return this.preOrder.createBy.uid === this.user.uid
+    }
   },
   methods: {
     ...mapActions([
       'bindPreOrderRef',
-      'addOtherMenu'
+      'addOtherMenu',
+      'closeOrder'
     ])
   }
 }
