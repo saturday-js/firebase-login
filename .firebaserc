@@ -1,6 +1,5 @@
 {
   "projects": {
-    "flyingsuki": "flyingsuki",
-    "default": "rorder-123"
+    "rorder-123": "rorder-123"
   }
 }
