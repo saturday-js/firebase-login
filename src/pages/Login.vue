@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="login--container">
     <div v-if="!isReady" class="">
       Loading...
     </div>
@@ -22,5 +22,10 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
+.login--container {
+  float: left;
+  width: 100%;
+  background-color: #fff;
+}
 </style>

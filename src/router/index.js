@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import NewPreOrder from '@/components/NewPreOrder'
-import PreOrder from '@/components/PreOrder'
-import Login from '@/components/Login'
-import PendingPage from '@/components/PendingPage'
+import Home from '@/pages/Home'
+import NewPreOrder from '@/pages/NewPreOrder'
+import PreOrder from '@/pages/PreOrder'
+import Login from '@/pages/Login'
+import PendingPage from '@/pages/PendingPage'
 
 Vue.use(Router)
 
