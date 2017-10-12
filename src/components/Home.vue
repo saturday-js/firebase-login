@@ -6,12 +6,6 @@
     <router-link to="/newpreorder" class=""><h1 class="title is-1">+ Pre Order</h1></router-link>
     <br>
 
-    <router-link to="/contacts" class=""><h1 class="title is-1">Contacts</h1></router-link>
-    <br>
-
-    <router-link to="/profile" class=""><h1 class="title is-1">Profile</h1></router-link>
-    <br>
-
     <a @click="logout"><h1 class="title is-1">Logout</h1></a>
   </div>
 </template>
