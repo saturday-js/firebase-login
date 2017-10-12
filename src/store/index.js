@@ -178,6 +178,13 @@ export default new Vuex.Store({
       }
       payload.menu = ''
     },
+    closeOrder ({ commit, state }, payload) {
+      db.ref('preorders')
+        .child(state.preOrder['.key'])
+        .update({
+          status: 'close'
+        })
+    },
     removeMenu ({ commit, state }, payload) {
       db.ref('preorders')
         .child(state.preOrder['.key'])

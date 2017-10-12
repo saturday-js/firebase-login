@@ -1,21 +1,26 @@
 <template lang="html">
   <div class="">
     <div v-if="preOrder.restaurantName">
+      <div class="has-text-centered">
+        <h1 v-if="preOrder.status === 'close'" class="title is-1 has-text-danger">CLOSE</h1>
+        <br>
+      </div>
+
       <order-card :preOrder="preOrder"></order-card>
 
-      <b-radio-group v-model="view">
-        <b-radio-button type="is-primary" value="edit">
+      <b-field>
+        <b-radio-button type="is-primary" v-model="view" native-value="edit">
           Order
         </b-radio-button>
 
-        <b-radio-button type="is-primary" value="detail">
+        <b-radio-button type="is-primary" v-model="view" native-value="detail">
           Detail
         </b-radio-button>
 
-        <b-radio-button type="is-primary" value="summary">
+        <b-radio-button type="is-primary" v-model="view" native-value="summary">
           Summary
         </b-radio-button>
-      </b-radio-group>
+      </b-field>
 
       <br>
 
@@ -40,6 +45,12 @@
 
         <a @click="addOtherMenu(formData)" class="button is-success is-large">Add</a>
       </div>
+
+      <div class="has-text-centered">
+        <hr v-if="isOwner">
+        <button v-if="isOwner" @click="closeOrder()" class="button is-danger">Close this order</button>
+      </div>
+      
     </div>
     <div v-else>
       Loading...
@@ -73,12 +84,16 @@ export default {
     ...mapGetters([
       'user',
       'preOrder'
-    ])
+    ]),
+    isOwner () {
+      return this.preOrder.createBy.uid === this.user.uid
+    }
   },
   methods: {
     ...mapActions([
       'bindPreOrderRef',
-      'addOtherMenu'
+      'addOtherMenu',
+      'closeOrder'
     ])
   }
 }
