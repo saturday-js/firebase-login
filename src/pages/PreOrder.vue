@@ -48,7 +48,8 @@
 
       <div class="has-text-centered">
         <hr v-if="isOwner">
-        <button v-if="isOwner" @click="closeOrder()" class="button is-danger">Close this order</button>
+        <button v-if="isOwner && preOrder.status === 'open'" @click="closeOrder()" class="button is-danger">Close this order</button>
+        <button v-if="isOwner && preOrder.status === 'close'" @click="ReOrder()" class="button is-warning">Open this Order</button>
       </div>
       
     </div>
@@ -93,8 +94,21 @@ export default {
     ...mapActions([
       'bindPreOrderRef',
       'addOtherMenu',
-      'closeOrder'
-    ])
+      'confirmCloseOrder',
+      'reCloseOrder'
+    ]),
+    closeOrder () {
+      this.$dialog.confirm({
+        message: 'ยืนยันการปิด ออร์เดอร์',
+        onConfirm: () => this.confirmCloseOrder()
+      })
+    },
+    ReOrder () {
+      this.$dialog.confirm({
+        message: 'ยืนยันการเปิด ออร์เดอร์',
+        onConfirm: () => this.reCloseOrder()
+      })
+    }
   }
 }
 </script>
