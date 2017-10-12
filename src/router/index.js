@@ -3,10 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import NewPreOrder from '@/components/NewPreOrder'
 import PreOrder from '@/components/PreOrder'
-import Contacts from '@/components/Contacts'
-import Contact from '@/components/Contact'
 import Login from '@/components/Login'
-import Profile from '@/components/Profile'
 import PendingPage from '@/components/PendingPage'
 
 Vue.use(Router)
