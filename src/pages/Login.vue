@@ -49,7 +49,6 @@ export default {
   float: left;
   width: 100%;
   height: 100vh;
-  background: -webkit-linear-gradient(top, #c94b4b, #4b134f);
 }
 .login--header {
   font-family: 'Lobster', cursive;
