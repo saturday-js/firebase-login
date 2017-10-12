@@ -16,7 +16,7 @@
     "rule": "mocha test/rules/index.js"
   },
   "dependencies": {
-    "buefy": "^0.4.4",
+    "buefy": "^0.5.4",
     "firebase": "^3.9.0",
     "targaryen": "^3.0.3",
     "vue": "^2.2.6",

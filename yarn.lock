@@ -1021,12 +1021,12 @@ browserslist@^1.3.6, browserslist@^1.4.0, browserslist@^1.5.2, browserslist@^1.7
     caniuse-db "^1.0.30000639"
     electron-to-chromium "^1.2.7"
 
-buefy@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.4.4.tgz#94962c644c7cec6b15b3e021486cb8398b0cc738"
+buefy@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.5.4.tgz#5c183ea309ad1b4f72a6945e269e571fec441c0f"
   dependencies:
-    bulma "^0.4.2"
-    vue "^2.3.3"
+    bulma "^0.5.3"
+    vue "^2.4.2"
 
 buffer-equal-constant-time@1.0.1:
   version "1.0.1"
@@ -1056,9 +1056,9 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
-bulma@^0.4.2:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.4.3.tgz#060da634b579ed99d7cedf0251d9e21e1f5c770d"
+bulma@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.5.3.tgz#be93afb6246192505c30df3f9c1c29a97d319a13"
 
 bytes@2.4.0:
   version "2.4.0"
@@ -6023,9 +6023,9 @@ vue@^2.2.6:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.3.2.tgz#9e52aae3593480be235ff227557837e69f98203a"
 
-vue@^2.3.3:
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.3.4.tgz#5ec3b87a191da8090bbef56b7cfabd4158038171"
+vue@^2.4.2:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.4.4.tgz#ea9550b96a71465fd2b8b17b61673b3561861789"
 
 vuex-router-sync@^4.1.2:
   version "4.1.2"
