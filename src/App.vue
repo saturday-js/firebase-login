@@ -1,5 +1,10 @@
 <template>
-  <div id="app">
+  <div class="container is-fluid layout-default--container" id="app">
+    <div class="column is-4 is-offset-4 layout-default--column">
+      <router-view></router-view>
+    </div>
+  </div>
+  <!-- <div id="app">
     <div class="section">
       <div class="container">
         <div class="columns">
@@ -20,7 +25,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -59,7 +64,10 @@ a {
    user-select: none;
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.profile-picture {
+* {
+  box-sizing: border-box;
+}
+/* .profile-picture {
   width: 100px;
   height: 100px;
   border-radius: 50px;
@@ -75,5 +83,19 @@ a {
   outline: 0;
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+} */
+</style>
+
+<style scoped>
+.layout-default--container {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  min-height: 100vh;
+  float: left;
+  width: 100% !important;
+}
+.layout-default--column {
+  float: left;
+  padding: 0;
 }
 </style>
