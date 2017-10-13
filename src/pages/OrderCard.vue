@@ -1,5 +1,6 @@
 <template lang="html">
   <div>
+    
     <div class="card--container" v-if="preOrder">
       <div class="card--card" @click="cardOnClick()">
         <div class="card--half-box" style="text-align: center;">
