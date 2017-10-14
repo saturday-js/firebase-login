@@ -1,9 +1,10 @@
 <template lang="html">
   <div class="">
+    <Navbar title="Pre Order" />
     <div v-if="preOrder.restaurantName">
       <div class="has-text-centered">
         <h1 v-if="preOrder.status === 'close'" class="title is-1 has-text-danger">CLOSE</h1>
-        <br>
+        <!-- <br> -->
       </div>
 
       <order-card :preOrder="preOrder"></order-card>
@@ -22,17 +23,20 @@
         </b-radio-button>
       </b-field>
 
-      <br>
 
-      <h1 class="subtitle is-3">{{ preOrder.restaurantName }}</h1>
+      <div class="column">
+        <h1 class="subtitle is-3">ร้าน {{ preOrder.restaurantName }}</h1>
+      </div>
 
       <hr>
+      
       <div v-for="(menu, index) in preOrder.menus">
-        <menu-amount :menu="menu" :index="index" :view="view"></menu-amount>
+        
+          <menu-amount :menu="menu" :index="index" :view="view"></menu-amount>
       </div>
 
 
-      <div v-if="view === 'edit'" >
+      <div class="column" v-if="view === 'edit'" >
         <div class="field">
           <br>
           <label class="label">
@@ -42,8 +46,9 @@
             <input v-model="formData.menu" @keyup.enter="addOtherMenu(formData)" class="input is-large" type="text" placeholder="">
           </p>
         </div>
-
-        <a @click="addOtherMenu(formData)" class="button is-success is-large">Add</a>
+        <div class="field has-text-centered">
+          <a @click="addOtherMenu(formData)" class="button is-success is-large">Add</a>
+        </div>
       </div>
 
       <div class="has-text-centered">
@@ -61,6 +66,7 @@
 </template>
 
 <script>
+import Navbar from './Navbar'
 import OrderCard from './OrderCard'
 import MenuAmount from './MenuAmount'
 import { mapGetters, mapActions } from 'vuex'
@@ -76,7 +82,8 @@ export default {
   },
   components: {
     MenuAmount,
-    OrderCard
+    OrderCard,
+    Navbar
   },
   created () {
     this.bindPreOrderRef(this.$route.params.id)

@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="column">
     <div v-if="view === 'edit'">
       <table width="100%">
         <tr>
@@ -25,10 +25,6 @@
           </td>
         </tr>
       </table>
-
-
-
-
       <hr>
     </div>
 
