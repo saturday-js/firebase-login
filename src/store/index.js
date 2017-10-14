@@ -1,17 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { firebaseMutations, firebaseAction } from 'vuexfire'
+import firebaseConfig from '../../firebase.config.js'
 import firebase from 'firebase'
 import router from '../router'
 
-let config = {
-  apiKey: 'AIzaSyCRwgWRdIUz3eILS_uI-JGktIK6cs0wAKY',
-  authDomain: 'rorder-123.firebaseapp.com',
-  databaseURL: 'https://rorder-123.firebaseio.com',
-  projectId: 'rorder-123',
-  storageBucket: '',
-  messagingSenderId: '891671971153'
-}
+// Your firebase config
+let config = firebaseConfig
+
 firebase.initializeApp(config)
 
 let db = firebase.database()

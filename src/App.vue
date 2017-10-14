@@ -65,7 +65,7 @@ a {
   width: 100%;
   padding: 0;
   min-height: 100vh;
-  /* background-image:linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%); */
+  background-image:linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%);
 }
 .background-1 {
   background-image:linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
