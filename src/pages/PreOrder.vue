@@ -111,6 +111,7 @@ export default {
     },
     curretUrl () {
       return window.location.href
+      // return 'http://bulma.io/documentation/overview/variables/'
     }
   }
 }

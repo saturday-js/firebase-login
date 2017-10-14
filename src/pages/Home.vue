@@ -44,11 +44,10 @@ export default {
       'preOrders'
     ]),
     activePreorder () {
-      return this.preOrders.filter((p) => p.status === 'open')
+      return this.preOrders.filter((p) => p.status === 'open').sort((s) => s.createTime)
     },
     inActivePreorder () {
-      console.log(this.preOrders.filter((p) => p.status !== 'open'))
-      return this.preOrders.filter((p) => p.status !== 'open')
+      return this.preOrders.filter((p) => p.status !== 'open').sort((s) => s.createTime)
     }
   },
   methods: {
