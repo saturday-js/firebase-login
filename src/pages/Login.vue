@@ -14,7 +14,8 @@
       </div>
       <div class="login--section-bottom" v-if="isReady">
         <button class="login--button" @click="login()">
-          Login with Facebook
+          <img src="../assets/svg/facebook.svg" class="login--ic-fb">
+          <span class="login--text-fb">Login with Facebook</span>
         </button>
         <div class="login--content">
           By signing up, I agree To Rorder Terms and Condition. (Actualy not have)
@@ -94,5 +95,14 @@ export default {
 }
 .login--button:hover {
   color: #fff;
+  cursor: pointer;
+}
+.login--ic-fb {
+  width: 30px;
+  padding-right: 5px;
+  vertical-align: middle;
+}
+.login--text-fb {
+  vertical-align: middle;
 }
 </style>

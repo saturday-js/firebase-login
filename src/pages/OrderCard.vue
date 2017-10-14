@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    
+
     <div class="card--container" v-if="preOrder">
       <div class="card--card" @click="cardOnClick()">
         <div class="card--half-box" style="text-align: center;">
@@ -11,11 +11,14 @@
           <div class="card--is-title">
             {{ preOrder.restaurantName }}
           </div>
-          <div class="card--count-down">
-            01 : 42 : 23
+          <div class="card--time-stamp">
+            Date : {{ convertTimeStamp(preOrder) }}
           </div>
           <div>
-            Total Order: x {{ calSum(preOrder) }}
+          Status: {{ preOrder.status }}
+          </div>
+          <div>
+            Total Order: {{ calSum(preOrder) }}
           </div>
         </div>
       </div>
@@ -24,11 +27,16 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   props: ['preOrder', 'index'],
   methods: {
     cardOnClick () {
       this.$emit('cardOnClick', this.preOrder['.key'])
+    },
+    convertTimeStamp (preOrder) {
+      return moment(parseInt(preOrder.createTime)).format('DD/MM/YYYY')
     },
     calSum (preOrder) {
       if (preOrder.menus) {
@@ -75,8 +83,8 @@ export default {
 .card--is-title {
   font-size: 28px;
 }
-.card--count-down {
-  font-size: 35px;
+.card--time-stamp {
+  font-size: 20px;
   padding: 10px 0;
 }
 </style>

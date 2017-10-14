@@ -13,19 +13,16 @@
           </td>
           <td width="130px">
             <div style="float: right;">
-
               <button v-if="sum > 0" @click="changeAmount(-1)" class="button">-</button>
               <button v-else @click="removeMenuFromPreOrder(index)" class="button">
                 <b-icon icon="delete" type="is-danger"></b-icon>
               </button>
-
               <span class="subtitle is-4">&nbsp;&nbsp;{{ userAmount }}&nbsp;&nbsp;</span>
               <button @click="changeAmount(1)" class="button">+</button>
             </div>
           </td>
         </tr>
       </table>
-      <hr>
     </div>
 
     <div v-else-if="view === 'detail' && sum > 0">
@@ -35,15 +32,11 @@
       <span class="subtitle is-4">
         ({{ sum }})
       </span>
-
       <br>
-
       <div v-for="user in menu.whos" class="">
         <span>{{ user.user.displayName }}</span>
         <span style="float: right;">{{ user.amount }}</span>
       </div>
-
-      <hr>
     </div>
 
     <div v-else-if="sum > 0">
@@ -60,16 +53,7 @@
             </span>
           </td>
         </tr>
-        <!-- <tr>
-          <td colspan="2">
-            <span v-for="user in menu.whos">
-              <img :src="user.user.fb.photoURL" alt="" class="user-img">
-            </span>
-          </td>
-        </tr> -->
       </table>
-
-      <hr>
     </div>
   </div>
 </template>

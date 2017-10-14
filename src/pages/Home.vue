@@ -1,14 +1,22 @@
 <template>
   <div>
     <Navbar title="Pre Order List" />
-    <div class="home--card-container">
-      <order-card @cardOnClick="goTo" v-for="(preOrder, key) in preOrders" :preOrder="preOrder" :key="key"></order-card>
-    </div>
-
-    <!-- <router-link to="/newpreorder" class=""><h1 class="title is-1">+ Pre Order</h1></router-link>
-    <br>
-
-    <a @click="logout"><h1 class="title is-1">Logout</h1></a> -->
+    <b-tabs v-model="activeTab" style="float: left;width: 100%;" expanded>
+      <b-tab-item label="Active">
+        <div class="home--card-container" :class="{'home--empty': !activePreorder.length}">
+          <order-card @cardOnClick="goTo" v-for="(preOrder, key) in activePreorder" :preOrder="preOrder" :key="key"></order-card>
+          <i v-if="!activePreorder.length" class="material-icons" style="font-size: 125px;color: #fff;">inbox</i>
+          <div style="color: #fff;" v-if="!activePreorder.length">Empty</div>
+        </div>
+      </b-tab-item>
+      <b-tab-item label="History">
+        <div class="home--card-container" :class="{'home--empty': !inActivePreorder.length}">
+          <order-card @cardOnClick="goTo" v-for="(preOrder, key) in inActivePreorder" :preOrder="preOrder" :key="key"></order-card>
+          <i v-if="!inActivePreorder.length" class="material-icons" style="font-size: 125px;color: #fff;">inbox</i>
+          <div style="color: #fff;" v-if="!inActivePreorder.length">Empty</div>
+        </div>
+      </b-tab-item>
+    </b-tabs>
   </div>
 </template>
 
@@ -19,6 +27,11 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'home',
+  data () {
+    return {
+      activeTab: 0
+    }
+  },
   components: {
     OrderCard,
     Navbar
@@ -29,10 +42,13 @@ export default {
       'userProfile',
       'contacts',
       'preOrders'
-    ])
-  },
-  data () {
-    return {
+    ]),
+    activePreorder () {
+      return this.preOrders.filter((p) => p.status === 'open')
+    },
+    inActivePreorder () {
+      console.log(this.preOrders.filter((p) => p.status !== 'open'))
+      return this.preOrders.filter((p) => p.status !== 'open')
     }
   },
   methods: {
@@ -53,8 +69,12 @@ export default {
 .home--card-container {
   float: left;
   width: 100%;
-  overflow: auto;
-  height: calc(100vh - 60px);
   padding-bottom: 15px;
+}
+.home--empty {
+  text-align: center;
+  padding-top: 30vh;
+  opacity: 0.7;
+  font-family: 'Amaranth', sans-serif;
 }
 </style>

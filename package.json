@@ -18,6 +18,9 @@
   "dependencies": {
     "buefy": "^0.5.4",
     "firebase": "^3.9.0",
+    "moment": "^2.19.1",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
     "targaryen": "^3.0.3",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",

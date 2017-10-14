@@ -2,66 +2,52 @@
   <div class="">
     <Navbar title="Pre Order" />
     <div v-if="preOrder.restaurantName">
-      <div class="has-text-centered">
-        <h1 v-if="preOrder.status === 'close'" class="title is-1 has-text-danger">CLOSE</h1>
-        <!-- <br> -->
-      </div>
-
       <order-card :preOrder="preOrder"></order-card>
-
-      <b-field>
-        <b-radio-button type="is-primary" v-model="view" native-value="edit">
-          Order
-        </b-radio-button>
-
-        <b-radio-button type="is-primary" v-model="view" native-value="detail">
-          Detail
-        </b-radio-button>
-
-        <b-radio-button type="is-primary" v-model="view" native-value="summary">
-          Summary
-        </b-radio-button>
-      </b-field>
-
-
-      <div class="column">
-        <h1 class="subtitle is-3">ร้าน {{ preOrder.restaurantName }}</h1>
+      <div class="preorder-close-order-container" v-if="isOwner && preOrder.status === 'open'" >
+        <button @click="closeOrder()" class="button is-danger">Close this pre order</button>
       </div>
-
-      <hr>
-      
-      <div v-for="(menu, index) in preOrder.menus">
-        
-          <menu-amount :menu="menu" :index="index" :view="view"></menu-amount>
+      <div class="preorder-tab-container">
+        <b-tabs v-model="activeTab" style="float: left;width: 100%;" expanded>
+          <b-tab-item label="Order" v-if="preOrder.status === 'open'">
+            <div v-for="(menu, index) in preOrder.menus">
+              <menu-amount :menu="menu" :index="index" view="edit"></menu-amount>
+            </div>
+            <div class="column">
+              <div class="field">
+                <br>
+                <label class="label">
+                  Other Menu
+                </label>
+                <p class="control">
+                  <input v-model="formData.menu" @keyup.enter="addOtherMenu(formData)" class="preorder-input-menu input is-large" type="text">
+                  <a @click="addOtherMenu(formData)" class="button is-success is-large">Add</a>
+                </p>
+              </div>
+            </div>
+          </b-tab-item>
+          <b-tab-item label="Detail">
+            <div v-if="calSum(preOrder) !== 0">
+              <div v-for="(menu, index) in preOrder.menus">
+                <menu-amount :menu="menu" :index="index" view="detail"></menu-amount>
+              </div>
+            </div>
+            <div v-else>
+              Not have order.
+            </div>
+          </b-tab-item>
+          <b-tab-item label="Summary">
+            <div v-if="calSum(preOrder) !== 0">
+              <div v-for="(menu, index) in preOrder.menus">
+                  <menu-amount :menu="menu" :index="index" view="summary"></menu-amount>
+              </div>
+            </div>
+            <div v-else>
+              Not have order.
+            </div>
+          </b-tab-item>
+        </b-tabs>
       </div>
-
-
-      <div class="column" v-if="view === 'edit'" >
-        <div class="field">
-          <br>
-          <label class="label">
-            Other Menu
-          </label>
-          <p class="control">
-            <input v-model="formData.menu" @keyup.enter="addOtherMenu(formData)" class="input is-large" type="text" placeholder="">
-          </p>
-        </div>
-        <div class="field has-text-centered">
-          <a @click="addOtherMenu(formData)" class="button is-success is-large">Add</a>
-        </div>
-      </div>
-
-      <div class="has-text-centered">
-        <hr v-if="isOwner">
-        <button v-if="isOwner && preOrder.status === 'open'" @click="closeOrder()" class="button is-danger">Close this order</button>
-        <button v-if="isOwner && preOrder.status === 'close'" @click="ReOrder()" class="button is-warning">Open this Order</button>
-      </div>
-      
     </div>
-    <div v-else>
-      Loading...
-    </div>
-
   </div>
 </template>
 
@@ -74,7 +60,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      view: 'edit',
+      activeTab: 0,
       formData: {
         menu: ''
       }
@@ -106,19 +92,45 @@ export default {
     ]),
     closeOrder () {
       this.$dialog.confirm({
-        message: 'ยืนยันการปิด ออร์เดอร์',
+        message: 'Are you sure ?',
         onConfirm: () => this.confirmCloseOrder()
       })
     },
-    ReOrder () {
-      this.$dialog.confirm({
-        message: 'ยืนยันการเปิด ออร์เดอร์',
-        onConfirm: () => this.reCloseOrder()
-      })
+    calSum (preOrder) {
+      if (preOrder.menus) {
+        return Object.keys(preOrder.menus).reduce((sum, menuKey) => {
+          let menu = preOrder.menus[menuKey]
+          if (!menu.whos) return sum
+          return sum + Object.keys(menu.whos).reduce((sum, key) => {
+            return sum + menu.whos[key].amount
+          }, 0)
+        }, 0)
+      } else {
+        return 0
+      }
+    },
+    curretUrl () {
+      return window.location.href
     }
   }
 }
 </script>
 
-<style lang="css">
+<style scoped>
+.preorder-tab-container {
+  float: left;
+  width: 100%;
+  padding: 15px;
+}
+.preorder-input-menu {
+  float: left;
+  width: 250px;
+  margin-right: 20px;
+}
+.preorder-close-order-container {
+  float: left;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+}
 </style>

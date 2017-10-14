@@ -1,0 +1,20 @@
+/* $primary: #2473e9; */
+/* $primary: hsl(0, 0%, 21%); */
+$primary: #fff;
+$family-primary: 'Amaranth', sans-serif;
+/* $grey-darker: #fff; */
+/* $grey-dark: #fff; */
+.subtitle {
+  color: #fff !important;
+}
+.label {
+  color: #fff !important;
+}
+
+.button.is-primary {
+   background-color: #7957d5 !important;
+}
+
+
+@import '~bulma/bulma.sass';
+@import "~buefy/src/scss/buefy";

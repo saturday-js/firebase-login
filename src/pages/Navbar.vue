@@ -1,9 +1,27 @@
 <template>
   <div>
-    <div class="home--header">
-      <i class="material-icons home--back-icon" @click="goBack">keyboard_backspace</i>
+    <div class="navbar--header">
+      <i v-if="$route.name !== 'Home'" class="material-icons navbar--back-icon" @click="goBack">keyboard_backspace</i>
+      <router-link to="/newpreorder" v-else style="color: #fff;">
+        <i class="material-icons navbar--add-icon">add</i>
+      </router-link>
       <span>{{title}}</span>
-      <i class="material-icons home--home-icon" @click="logout">lock_outline</i>
+      <b-dropdown class="navbar--dropdown-right">
+        <a class="navbar-item" slot="trigger">
+          <i class="material-icons navbar--home-icon">list</i>
+        </a>
+        <b-dropdown-item>
+          <router-link to="/newpreorder" class="">
+            <span style="color: #4a4a4a">+ Pre Order</span>
+          </router-link>
+        </b-dropdown-item>
+        <b-dropdown-item  @click="reportBug">
+          <span>Bug Report</span>
+        </b-dropdown-item>
+        <b-dropdown-item  @click="logout">
+          <span>Sign out</span>
+        </b-dropdown-item>
+      </b-dropdown>
     </div>
   </div>
 </template>
@@ -15,18 +33,21 @@ export default {
   name: 'navbar',
   props: ['title'],
   methods: {
-    ...mapActions({
-      logout: 'logout'
-    }),
+    ...mapActions([
+      'logout'
+    ]),
     goBack () {
       this.$router.go(-1)
+    },
+    reportBug () {
+      window.open('https://github.com/Sellsuki/rorder/issues/new', '_blank')
     }
   }
 }
 </script>
 
 <style scoped>
-.home--header {
+.navbar--header {
   float: left;
   width: 100%;
   height: 60px;
@@ -38,14 +59,28 @@ export default {
   font-weight: bold;
   position: relative;
 }
-.home--back-icon {
+.navbar--back-icon {
   position: absolute;
   left: 10px;
   font-size: 35px;
+  cursor: pointer;
 }
-.home--home-icon {
+.navbar--add-icon {
+  position: absolute;
+  left: 10px;
+  font-size: 35px;
+  cursor: pointer;
+}
+.navbar--home-icon {
   position: absolute;
   right: 10px;
   font-size: 35px;
+  color: #fff;
+  top: 0;
+  cursor: pointer;
+}
+.navbar--dropdown-right {
+  position: absolute;
+  right: 10px;
 }
 </style>

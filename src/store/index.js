@@ -4,6 +4,7 @@ import { firebaseMutations, firebaseAction } from 'vuexfire'
 import firebaseConfig from '../../firebase.config.js'
 import firebase from 'firebase'
 import router from '../router'
+import moment from 'moment'
 
 // Your firebase config
 let config = firebaseConfig
@@ -11,7 +12,7 @@ let config = firebaseConfig
 firebase.initializeApp(config)
 
 let db = firebase.database()
-let preOrdersRef = db.ref('preorders').orderByChild('status').equalTo('open')
+let preOrdersRef = db.ref('preorders')
 
 Vue.use(Vuex)
 
@@ -123,32 +124,14 @@ export default new Vuex.Store({
         status: 'open',
         restaurantName: formData.restaurantName,
         createBy: state.user,
-        style: Math.floor((Math.random() * 5) + 1)
-        // menus: formData.menus.map(menu => {
-        //   return {
-        //     status: '',
-        //     menu: menu.menu,
-        //     price: 0
-        //     // whos: {
-        //     //   uid: {
-        //     //     user: state.user,
-        //     //     amount: 1
-        //     //   }
-        //     // }
-        //   }
-        // })
+        style: Math.floor((Math.random() * 5) + 1),
+        createTime: moment().format('x')
       }
       let menus = formData.menus.map(menu => {
         return {
           status: '',
           menu: menu.menu,
           price: 0
-          // whos: {
-          //   uid: {
-          //     user: state.user,
-          //     amount: 1
-          //   }
-          // }
         }
       })
       db.ref('preorders').push(data).then((data) => {
