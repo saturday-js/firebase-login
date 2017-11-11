@@ -1,17 +1,6 @@
 <template lang="html">
   <div>
     <div class="login--container">
-      <div class="login--section-top">
-        <div class="login--header">
-          Rorder
-        </div>
-        <div class="login--title">
-          Welcome to Rorder
-        </div>
-        <div class="login--content">
-          Online ordering food or drink built just for your comfortable.
-        </div>
-      </div>
       <div class="login--section-bottom" v-if="isReady">
         <button class="login--button" @click="login()">
           <img src="../assets/svg/facebook.svg" class="login--ic-fb">
