@@ -4,37 +4,9 @@
       {{ user }}
       {{ userProfile }}
     </div>
-    Hi
-    Hola
-    Jambo
-    Bonjour
-    Hallo
-    Nín hǎo
-    Hei
-    Annyeonghaseyo
-    Ahoj
-    Kon’nichiwa
-    Zdravo
-    Labas
-    Merhaba
-    Olá
-    Helo
-    Ahoy
-    Alo
-    Hej
-    Dia duit
-    Halló
-    G’Day Mate
-    Sawubona
-    Hallo
-    Zdravo
-    Ciao
-    Hallå
-    Alo
-    Përshëndetje
-    Aloha
-    Privet
-    Kumusta
+    <div>
+      <h2 v-for="hi in his">{{ hi }}</h2>
+    </div>
   </div>
 </template>
 
@@ -42,6 +14,43 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'home',
+  data () {
+    return {
+      his: [
+        'Hi',
+        'Hola',
+        'Jambo',
+        'Bonjour',
+        'Hallo',
+        'Nín hǎo',
+        'Hei',
+        'Annyeonghaseyo',
+        'Ahoj',
+        'Kon’nichiwa',
+        'Zdravo',
+        'Labas',
+        'Merhaba',
+        'Olá',
+        'Helo',
+        'Ahoy',
+        'Alo',
+        'Hej',
+        'Dia duit',
+        'Halló',
+        'G’Day Mate',
+        'Sawubona',
+        'Hallo',
+        'Zdravo',
+        'Ciao',
+        'Hallå',
+        'Alo',
+        'Përshëndetje',
+        'Aloha',
+        'Privet',
+        'Kumusta'
+      ]
+    }
+  },
   computed: {
     ...mapGetters([
       'user',
