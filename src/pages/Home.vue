@@ -5,7 +5,7 @@
       {{ userProfile }}
     </div>
     <div>
-      <h2 v-for="hi in his">{{ hi }}</h2>
+      <h2 :key="hi" v-for="hi in his">{{ hi }}</h2>
     </div>
   </div>
 </template>

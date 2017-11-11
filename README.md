@@ -2,6 +2,26 @@
 
 > A Vue.js project
 
+## First time install
+
+<img src="ss1.png"></img>
+
+``` bash
+# Create new file in root directory. Named it firebase.config.js.
+# Copy everything include {} from to that file
+# It should look like this
+
+export default {
+  apiKey: 'Faraway',
+  authDomain: 'U why u not read',
+  databaseURL: 'Cat is fucking annoying',
+  projectId: 'Kebob is very delicious',
+  storageBucket: 'U should focus dude',
+  messagingSenderId: '891671971153'
+}
+
+```
+
 ## Build Setup
 
 ``` bash
