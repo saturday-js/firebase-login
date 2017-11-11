@@ -1,21 +1,9 @@
 <template lang="html">
-  <div>
-    <div class="login--container">
-      <div class="login--section-bottom" v-if="isReady">
-        <button class="login--button" @click="login()">
-          <img src="../assets/svg/facebook.svg" class="login--ic-fb">
-          <span class="login--text-fb">Login with Facebook</span>
-        </button>
-        <div class="login--content">
-          By signing up, I agree To Rorder Terms and Condition. (Actualy not have)
-        </div>
-      </div>
-      <div class="login--section-bottom" v-else>
-        <div class="login--title">
-          Loading...
-        </div>
-      </div>
+  <div class="login--container">
+    <div v-if="!isReady" class="">
+      Loading...
     </div>
+    <button v-else class="button" @click="login()">login</button>
   </div>
 </template>
 
@@ -38,60 +26,6 @@ export default {
 .login--container {
   float: left;
   width: 100%;
-  height: 100vh;
-}
-.login--header {
-  font-family: 'Lobster', cursive;
-  font-size: 90px;
-  text-align: center;
-  color: #fff;
-}
-.login--title {
-  font-family: 'Lobster', cursive;
-  text-align: center;
-  color: #fff;
-  font-size: 24px;
-  padding-bottom: 5px;
-}
-.login--content {
-  font-family: 'Lobster', cursive;
-  text-align: center;
-  color: #fff;
-  font-size: 14px;
-  padding: 0 35px;
-}
-.login--section-top {
-  float: left;
-  width: 100%;
-}
-.login--section-bottom {
-  margin-top: calc(100vh - 218px - 162px);
-  float: left;
-  width: 100%;
-  text-align: center;
-  padding-bottom: 30px;
-}
-.login--button {
-  border-radius: 5px;
-  margin-bottom: 30px;
-  width: 300px;
-  background-color: transparent;
-  border: 2px solid #fff;
-  height: 60px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
-}
-.login--button:hover {
-  color: #fff;
-  cursor: pointer;
-}
-.login--ic-fb {
-  width: 30px;
-  padding-right: 5px;
-  vertical-align: middle;
-}
-.login--text-fb {
-  vertical-align: middle;
+  background-color: #fff;
 }
 </style>

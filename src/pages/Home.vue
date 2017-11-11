@@ -66,15 +66,4 @@ export default {
 </script>
 
 <style scoped>
-.home--card-container {
-  float: left;
-  width: 100%;
-  padding-bottom: 15px;
-}
-.home--empty {
-  text-align: center;
-  padding-top: 30vh;
-  opacity: 0.7;
-  font-family: 'Amaranth', sans-serif;
-}
 </style>
