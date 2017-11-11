@@ -1,9 +1,17 @@
 {
   "rules": {
-    ".read": "auth !== null",
-    ".write": "auth !== null",
-    "preorders": {
-      ".indexOn": ["status"]
+    ".read": "auth != null",
+    "twitter": {
+      "users": {
+        "$uid": {
+          "posts": {
+            ".write": "auth != null && $uid == auth.uid"
+          },
+          "name": {
+            ".write": "true"
+          }
+        }
+      }
     }
   }
 }

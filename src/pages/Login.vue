@@ -3,7 +3,9 @@
     <div v-if="!isReady" class="">
       Loading...
     </div>
-    <button v-else class="button" @click="login()">login</button>
+    <div v-else>
+      <button class="button" @click="login()">login</button>
+    </div>
   </div>
 </template>
 
@@ -12,12 +14,14 @@ import { mapActions, mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(['isReady'])
+    ...mapGetters([
+      'isReady'
+    ])
   },
   methods: {
-    ...mapActions({
-      login: 'login'
-    })
+    ...mapActions([
+      'login'
+    ])
   }
 }
 </script>
