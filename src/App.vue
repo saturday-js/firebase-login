@@ -29,7 +29,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'app',
   computed: {
-    ...mapGetters(['userProfile'])
+    ...mapGetters([])
   },
   methods: {
     ...mapActions([
