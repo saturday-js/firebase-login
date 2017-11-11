@@ -46,6 +46,7 @@ export default new Vuex.Store({
             fb: user.providerData[0]
           }
           commit('setUser', profile)
+          router.push('/')
         } else {
           commit('setUser', null)
           router.push('/login')
