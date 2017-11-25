@@ -2,8 +2,7 @@
   <div>
     <div>
       {{ counter }}
-      <button @click="setCounter" class="button is-primary">Set</button>
-      
+      <button @click="incrementCounter" class="button is-primary">+</button>
     </div>
     <br><br><br>
     <a @click="logout"><h1 class="title is-1">Logout</h1></a>
@@ -31,7 +30,7 @@ export default {
       'logout',
       'bindCounterRef',
       'unbindCounterRef',
-      'setCounter'
+      'incrementCounter'
     ])
   },
   created () {

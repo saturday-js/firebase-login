@@ -15,8 +15,10 @@ export default {
     ...firebaseMutations
   },
   actions: {
-    async setCounter (store, msg) {
-      counterRef.set(10)
+    async incrementCounter (store, msg) {
+      counterRef.once('value', snapshot => {
+        counterRef.set(snapshot.val() + 1)
+      })
     },
     bindCounterRef: firebaseAction(({ bindFirebaseRef, unbindFirebaseRef }) => {
       bindFirebaseRef('counter', counterRef)
