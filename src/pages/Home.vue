@@ -1,28 +1,8 @@
 <template>
   <div>
     <div>
-      <img :src="user.fb && user.fb.photoURL" class="photo-url" alt="">
-      <br>
-      <h2 class="subtitle">{{user.displayName}}</h2>
-
-      <button class="button is-pramary" @click="inserFakePost('oooo')">Fake</button>
-
-      <hr>
-
-      <input v-model="newPostInput" type="text" class="input" @keyup.enter="submitPost">
-
-      <hr>
-
-      <div v-for="post in posts" :key="post['.key']">
-        <!-- {{post['.key']}} -->
-        <h2 class="subtitle">
-          {{post.msg}}
-        </h2>
-        <p>
-          - <router-link :to="`/profile/${post.user.id}`">{{post.user.name}}</router-link>
-        </p>
-        <hr>
-      </div>
+      {{ counter }}
+      <button @click="setCounter" class="button is-primary">Set</button>
       
     </div>
     <br><br><br>
@@ -43,26 +23,22 @@ export default {
   computed: {
     ...mapGetters([
       'user',
-      'posts'
+      'counter'
     ])
   },
   methods: {
     ...mapActions([
       'logout',
-      'setPostRef',
-      'unSetPostRef',
-      'insertPost',
-      'inserFakePost'
-    ]),
-    submitPost () {
-      this.insertPost(this.newPostInput)
-    }
+      'bindCounterRef',
+      'unbindCounterRef',
+      'setCounter'
+    ])
   },
   created () {
-    this.setPostRef()
+    this.bindCounterRef()
   },
   destroyed () {
-    this.unSetPostRef()
+    this.unbindCounterRef()
   }
 }
 </script>
